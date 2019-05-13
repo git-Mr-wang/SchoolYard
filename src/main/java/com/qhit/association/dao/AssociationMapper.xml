@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.qhit.association.dao.IAssociationDao"> 
+	<!-- 自定义结果集 --> 
+	<resultMap id="BaseResultMap" type="com.qhit.association.pojo.Association"> 
+		<id property="asId" column="as_id" javaType="java.lang.Integer"></id> 
+		<result property="asName" column="as_name" javaType="java.lang.String"></result> 
+		<result property="userId" column="user_id" javaType="java.lang.Integer"></result> 
+		<result property="describe" column="describe" javaType="java.lang.String"></result> 
+		<result property="asLmage" column="as_lmage" javaType="java.lang.String"></result> 
+		<result property="asLabel" column="as_label" javaType="java.lang.Integer"></result> 
+		<result property="exaState" column="exa_state" javaType="java.lang.Integer"></result> 
+	</resultMap> 
+
+	<!-- 在各种标签中，id属性必须与接口中的方法名一样，id的值必须是唯一的，parameterType指查询时使用的参数类型， 
+	resultType属性指明查询返回的结果集类型    --> 
+ 
+	<sql id="Base_Column_List" > 
+		as_id,as_name,user_id,describe,as_lmage,as_label,exa_state 
+	</sql> 
+	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where as_id = #{asId} 
+	</select> 
+	<delete id="delete" parameterType="java.lang.Integer" > 
+		delete from association 
+		where as_id = #{asId} 
+	</delete> 
+	<insert id="insert" parameterType="com.qhit.association.pojo.Association" > 
+		insert into association(as_name,user_id,describe,as_lmage,as_label,exa_state) 
+		values (#{asName},#{userId},#{describe},#{asLmage},#{asLabel},#{exaState}) 
+	</insert> 
+	<update id="updateSelective" parameterType="com.qhit.association.pojo.Association" > 
+		update association 
+		<set > 
+			<if test="asName != null and asName!='' " > 
+				as_name = #{asName}, 
+			</if> 
+			<if test="userId != null and userId!='' " > 
+				user_id = #{userId}, 
+			</if> 
+			<if test="describe != null and describe!='' " > 
+				describe = #{describe}, 
+			</if> 
+			<if test="asLmage != null and asLmage!='' " > 
+				as_lmage = #{asLmage}, 
+			</if> 
+			<if test="asLabel != null and asLabel!='' " > 
+				as_label = #{asLabel}, 
+			</if> 
+			<if test="exaState != null and exaState!='' " > 
+				exa_state = #{exaState}, 
+			</if> 
+		</set> 
+		where as_id = #{asId} 
+	</update> 
+	<update id="update" parameterType="com.qhit.association.pojo.Association" > 
+		update association 
+		set  as_name = #{asName}, user_id = #{userId}, describe = #{describe}, as_lmage = #{asLmage}, as_label = #{asLabel}, exa_state = #{exaState} 
+		where as_id = #{asId} 
+	</update> 
+	<select id="findAll" resultMap="BaseResultMap" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+	</select> 
+	<select id="findByAsName" resultMap="BaseResultMap" parameterType="java.lang.String" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where as_name = #{asName} 
+	</select> 
+	<select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where user_id = #{userId} 
+	</select> 
+	<select id="findByDescribe" resultMap="BaseResultMap" parameterType="java.lang.String" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where describe = #{describe} 
+	</select> 
+	<select id="findByAsLmage" resultMap="BaseResultMap" parameterType="java.lang.String" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where as_lmage = #{asLmage} 
+	</select> 
+	<select id="findByAsLabel" resultMap="BaseResultMap" parameterType="java.lang.Integer" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where as_label = #{asLabel} 
+	</select> 
+	<select id="findByExaState" resultMap="BaseResultMap" parameterType="java.lang.Integer" > 
+		select 
+		<include refid="Base_Column_List" /> 
+		from association 
+		where exa_state = #{exaState} 
+	</select> 
+	<delete id="deleteBatch" parameterType="java.util.Arrays"> 
+		delete from association where as_id in 
+		<foreach collection="array" item="id" open="(" close=")" separator=","> 
+			#{id} 
+		</foreach> 
+	</delete> 
+	<select id="search" parameterType="com.qhit.association.pojo.Association" resultMap="BaseResultMap"> 
+		select * from  association 
+		<where > 
+			<if test="asName != null and asName!='' " > 
+				 and as_name = #{asName} 
+			</if> 
+			<if test="userId != null and userId!='' " > 
+				 and user_id = #{userId} 
+			</if> 
+			<if test="describe != null and describe!='' " > 
+				 and describe = #{describe} 
+			</if> 
+			<if test="asLmage != null and asLmage!='' " > 
+				 and as_lmage = #{asLmage} 
+			</if> 
+			<if test="asLabel != null and asLabel!='' " > 
+				 and as_label = #{asLabel} 
+			</if> 
+			<if test="exaState != null and exaState!='' " > 
+				 and exa_state = #{exaState} 
+			</if> 
+		</where>
+		LIMIT #{currentPage},#{pageSize}
+	</select> 
+</mapper> 
