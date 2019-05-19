@@ -3,7 +3,7 @@ package com.qhit.baseStatus.service;
 import java.util.List;
 import com.qhit.baseStatus.pojo.BaseStatus;
 /**
-* Created by GeneratorCode on 2019/05/10
+* Created by GeneratorCode on 2018/12/10
 */
 public interface IBaseStatusService {
 
