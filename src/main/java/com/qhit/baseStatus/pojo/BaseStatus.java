@@ -2,7 +2,7 @@ package com.qhit.baseStatus.pojo;
 
 
 /** 
-* Created by GeneratorCode on 2019/05/10
+* Created by GeneratorCode on 2018/12/10
 */ 
 
 public class BaseStatus { 
