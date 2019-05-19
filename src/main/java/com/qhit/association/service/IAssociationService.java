@@ -3,7 +3,7 @@ package com.qhit.association.service;
 import java.util.List;
 import com.qhit.association.pojo.Association;
 /**
-* Created by GeneratorCode on 2019/05/09
+* Created by GeneratorCode on 2018/12/09
 */
 public interface IAssociationService {
 
