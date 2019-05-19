@@ -5,7 +5,7 @@ import com.qhit.baseStatus.pojo.BaseStatus;
 import java.util.List;
 
 /** 
-* Created by GeneratorCode on 2019/05/10
+* Created by GeneratorCode on 2018/12/10
 */
 
 @Mapper  
