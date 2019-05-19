@@ -2,7 +2,7 @@ package com.qhit.association.pojo;
 
 
 /** 
-* Created by GeneratorCode on 2019/05/09
+* Created by GeneratorCode on 2018/12/09
 */ 
 
 public class Association { 
