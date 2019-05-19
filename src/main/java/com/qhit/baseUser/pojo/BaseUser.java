@@ -4,7 +4,7 @@ package com.qhit.baseUser.pojo;
 import com.qhit.baseStatus.pojo.BaseStatus;
 
 /**
-* Created by GeneratorCode on 2019/05/05
+* Created by GeneratorCode on 2018/12/10
 */ 
 
 public class BaseUser { 
