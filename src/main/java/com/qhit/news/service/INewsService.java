@@ -3,7 +3,7 @@ package com.qhit.news.service;
 import java.util.List;
 import com.qhit.news.pojo.News;
 /**
-* Created by GeneratorCode on 2019/05/08
+* Created by GeneratorCode on 2018/12/11
 */
 public interface INewsService {
 
