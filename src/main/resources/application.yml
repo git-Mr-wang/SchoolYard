@@ -5,11 +5,13 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://172.25.20.127:8085/eureka/
+      defaultZone: http://user:123456@172.25.20.125:9000/eureka/
+#      defaultZone: http://172.25.20.125:8085/eureka/
 #      defaultZone: http://172.25.20.119:8081/eureka/
   instance:
+    prefer-ip-address: true   #在eurekaServer中服务地址以ip显示
     instance-id: 172.25.20.125:6100
-    prefer-ip-address: true
+#    prefer-ip-address: true
 # 为服务起个名字
 spring:
   application:
@@ -18,9 +20,9 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://172.25.20.125:3306/schoolyard?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
-  driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
   redis:
-    host: 172.25.20.127
+    host: 172.25.20.125
 #    host: 172.25.20.119
     port: 6379
     database: 0
